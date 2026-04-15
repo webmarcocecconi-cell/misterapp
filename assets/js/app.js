@@ -3,6 +3,25 @@
 
 let selectedSecondary = [];
 
+// Lista degli obiettivi secondari disponibili
+window.secondaryObjectives = [
+    "Dribbling",
+    "Passaggio",
+    "Tiro in porta",
+    "Contrasto",
+    "Heading (gioco di testa)",
+    "Transizioni",
+    "Possesso palla",
+    "Pressing",
+    "Cross e finalizzazione",
+    "Uscita dal pressing",
+    "Lettura dello spazio",
+    "Difesa a zona",
+    "Difesa a uomo",
+    "Sviluppo manovra",
+    "Calci piazzati"
+];
+
 document.addEventListener('DOMContentLoaded', () => {
     initForm();
     initSecondaryAccordion();
@@ -141,25 +160,12 @@ function showError(message) {
     }
 }
 
-// Modal resources functions (da implementare con Tavily)
+// Modal resources functions
 window.openResourcesModal = async () => {
     const modal = document.getElementById('resources-modal');
     if (!modal) return;
     
     modal.classList.remove('hidden');
-    
-    // Get last generated seduta for context
-    const seduta = sessionStorage.getItem('currentSeduta');
-    let query = 'esercizi calcio allenamento';
-    
-    if (seduta) {
-        try {
-            const parsed = JSON.parse(seduta);
-            if (parsed.attivazione?.nome) {
-                query = parsed.attivazione.nome;
-            }
-        } catch(e) {}
-    }
     
     const contentDiv = document.getElementById('resources-content');
     if (contentDiv) {
@@ -170,7 +176,7 @@ window.openResourcesModal = async () => {
         const response = await fetch('/functions/cerca-risorse', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ query: query })
+            body: JSON.stringify({ query: 'esercizi calcio allenamento' })
         });
         
         const data = await response.json();
@@ -195,7 +201,7 @@ window.openResourcesModal = async () => {
             }
             
             if (!data.links?.length && !data.images?.length) {
-                html = '<p>Nessuna risorsa trovata. Prova a generare prima una seduta.</p>';
+                html = '<p>Nessuna risorsa trovata.</p>';
             }
             
             contentDiv.innerHTML = html;
