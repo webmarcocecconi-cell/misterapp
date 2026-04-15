@@ -23,7 +23,7 @@
     </header>
 
     <main class="main-content">
-      <form id="generatorForm" class="generator-form">
+      <form id="training-form" class="generator-form">
         <div class="form-group">
           <label for="categoria">Categoria *</label>
           <select id="categoria" name="categoria" required>
@@ -44,8 +44,8 @@
         </div>
 
         <div class="form-group">
-          <label for="obiettivoPrimario">Obiettivo Primario *</label>
-          <select id="obiettivoPrimario" name="obiettivoPrimario" required>
+          <label for="obiettivo-primario">Obiettivo Primario *</label>
+          <select id="obiettivo-primario" name="obiettivoPrimario" required>
             <option value="" disabled selected>Seleziona obiettivo...</option>
             <option value="Possesso palla">Possesso palla</option>
             <option value="Non possesso (Pressing/Riconquista)">Non possesso (Pressing/Riconquista)</option>
@@ -59,9 +59,16 @@
         </div>
 
         <div class="form-group">
-          <label>Obiettivi Secondari</label>
-          <div class="accordion-container" id="obiettiviSecondariContainer"></div>
-          <div class="selected-chips-summary" id="selectedChipsSummary"></div>
+          <div class="accordion-header" id="secondary-header">
+            <span>📌 Obiettivi Secondari</span>
+            <span class="accordion-arrow">▼</span>
+          </div>
+          <div class="accordion-content hidden" id="secondary-content">
+            <div class="chips-container" id="secondary-chips"></div>
+          </div>
+          <div class="selected-summary" id="selected-summary">
+            <span class="text-gray-500">Nessun obiettivo secondario selezionato</span>
+          </div>
         </div>
 
         <div class="form-actions">
@@ -73,7 +80,7 @@
               <span class="loader-ball"></span>
             </span>
           </button>
-          <button type="button" class="btn btn-secondary" id="risorseBtn">
+          <button type="button" class="btn btn-secondary" id="risorseBtn" onclick="openResourcesModal()">
             📚 Risorse e link utili
           </button>
         </div>
@@ -85,13 +92,14 @@
     </footer>
   </div>
 
-  <div class="modal" id="risorseModal">
+  <!-- Modal Risorse -->
+  <div id="resources-modal" class="modal hidden">
     <div class="modal-content">
       <div class="modal-header">
         <h2>📚 Risorse e link utili</h2>
-        <button class="modal-close" id="closeModalBtn">&times;</button>
+        <button class="modal-close" onclick="closeResourcesModal()">&times;</button>
       </div>
-      <div class="modal-body" id="risorseContent">
+      <div class="modal-body" id="resources-content">
         <div class="loader-container">
           <div class="loader-spinner"></div>
           <p>Caricamento risorse...</p>
@@ -99,6 +107,8 @@
       </div>
     </div>
   </div>
+
+  <div id="error-message" class="error-message hidden"></div>
 
   <script src="/assets/js/pwa.js"></script>
   <script src="/assets/js/app.js"></script>
