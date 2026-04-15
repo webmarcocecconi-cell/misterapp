@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+  <meta name="theme-color" content="#0f2027">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" type="image/svg+xml" href="/assets/icons/logo.svg">
+  <link rel="apple-touch-icon" href="/assets/icons/icon-192.png">
+  <title>MisterApp - Genera Sedute di Allenamento</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <div class="app-container">
+    <header class="app-header">
+      <div class="logo-container">
+        <img src="/assets/icons/logo.svg" alt="MisterApp Logo" class="logo">
+        <h1 class="app-title">MisterApp <span class="byline">by MC</span></h1>
+      </div>
+      <p class="app-description">Genera la tua seduta di allenamento con il team virtuale di esperti</p>
+    </header>
+
+    <main class="main-content">
+      <form id="generatorForm" class="generator-form">
+        <div class="form-group">
+          <label for="categoria">Categoria *</label>
+          <select id="categoria" name="categoria" required>
+            <option value="" disabled selected>Seleziona categoria...</option>
+            <option value="Pulcini U8">Pulcini U8</option>
+            <option value="Pulcini U9">Pulcini U9</option>
+            <option value="Esordienti U10">Esordienti U10</option>
+            <option value="Esordienti U11">Esordienti U11</option>
+            <option value="Giovanissimi U12">Giovanissimi U12</option>
+            <option value="Giovanissimi U13">Giovanissimi U13</option>
+            <option value="Allievi U14">Allievi U14</option>
+            <option value="Allievi U15">Allievi U15</option>
+            <option value="Allievi U16">Allievi U16</option>
+            <option value="Juniores U17">Juniores U17</option>
+            <option value="Juniores U19">Juniores U19</option>
+            <option value="Prima Squadra">Prima Squadra</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="obiettivoPrimario">Obiettivo Primario *</label>
+          <select id="obiettivoPrimario" name="obiettivoPrimario" required>
+            <option value="" disabled selected>Seleziona obiettivo...</option>
+            <option value="Possesso palla">Possesso palla</option>
+            <option value="Non possesso (Pressing/Riconquista)">Non possesso (Pressing/Riconquista)</option>
+            <option value="Transizione positiva/negativa">Transizione positiva/negativa</option>
+            <option value="Finalizzazione/Tiro in porta">Finalizzazione/Tiro in porta</option>
+            <option value="Costruzione dal basso">Costruzione dal basso</option>
+            <option value="Ampiezza/Sviluppo laterale">Ampiezza/Sviluppo laterale</option>
+            <option value="Profondità/Verticalizzazione">Profondità/Verticalizzazione</option>
+            <option value="Tecnica di base">Tecnica di base</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Obiettivi Secondari</label>
+          <div class="accordion-container" id="obiettiviSecondariContainer"></div>
+          <div class="selected-chips-summary" id="selectedChipsSummary"></div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary" id="generaBtn">
+            <span class="btn-text">Genera Seduta</span>
+            <span class="btn-loader" style="display: none;">
+              <span class="loader-ball"></span>
+              <span class="loader-ball"></span>
+              <span class="loader-ball"></span>
+            </span>
+          </button>
+          <button type="button" class="btn btn-secondary" id="risorseBtn">
+            📚 Risorse e link utili
+          </button>
+        </div>
+      </form>
+    </main>
+
+    <footer class="app-footer">
+      <p>&copy; 2026 MisterApp by MC - Tutti i diritti riservati</p>
+    </footer>
+  </div>
+
+  <div class="modal" id="risorseModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>📚 Risorse e link utili</h2>
+        <button class="modal-close" id="closeModalBtn">&times;</button>
+      </div>
+      <div class="modal-body" id="risorseContent">
+        <div class="loader-container">
+          <div class="loader-spinner"></div>
+          <p>Caricamento risorse...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/assets/js/pwa.js"></script>
+  <script src="/assets/js/app.js"></script>
+</body>
+</html>
