@@ -1,4 +1,4 @@
-// MisterApp - Main Application
+// MisterApp - Main Application (Vercel version)
 // Cloudflare Pages version
 
 let selectedSecondary = [];
@@ -51,7 +51,7 @@ function initForm() {
         }
         
         try {
-            const response = await fetch('/functions/genera-seduta', {
+            const response = await fetch('/api/genera-seduta', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -173,7 +173,7 @@ window.openResourcesModal = async () => {
     }
     
     try {
-        const response = await fetch('/functions/cerca-risorse', {
+        const response = await fetch('/api/cerca-risorse', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ query: 'esercizi calcio allenamento' })
