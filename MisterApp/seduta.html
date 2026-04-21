@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0f2027">
+  <title>MisterApp - Seduta Generata</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <div class="app-container">
+    <header class="app-header app-header-compact">
+      <div class="header-left">
+        <a href="/" class="back-link">← Indietro</a>
+      </div>
+      <div class="header-center">
+        <img src="/assets/icons/logo.svg" alt="Logo" class="logo-small">
+        <h2>Seduta di Allenamento</h2>
+      </div>
+      <div class="header-right">
+        <button class="btn btn-icon" id="downloadPdfBtn" title="Scarica PDF">📄 PDF</button>
+      </div>
+    </header>
+
+    <main class="seduta-content" id="sedutaContent">
+      <div class="loader-container">
+        <div class="loader-spinner"></div>
+        <p>Caricamento seduta...</p>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="/assets/js/canvas.js"></script>
+  <script src="/assets/js/seduta.js"></script>
+</body>
+</html>
